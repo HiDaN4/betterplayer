@@ -73,12 +73,16 @@ class BetterPlayerController extends ChangeNotifier {
       StreamController.broadcast();
 
   BetterPlayerController(this.betterPlayerConfiguration,
-      {this.betterPlayerPlaylistConfiguration, this.betterPlayerDataSource})
+      {this.betterPlayerPlaylistConfiguration,
+      this.betterPlayerDataSource,
+      this.videoPlayerController})
       : assert(betterPlayerConfiguration != null,
             "BetterPlayerConfiguration can't be null") {
     _eventListeners.add(eventListener);
     if (betterPlayerDataSource != null) {
       _setup(betterPlayerDataSource);
+    } else if (this.videoPlayerController != null) {
+      _initialize();
     }
   }
 

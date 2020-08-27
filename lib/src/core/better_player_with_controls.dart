@@ -107,11 +107,16 @@ class _BetterPlayerWithControlsState extends State<BetterPlayerWithControls> {
   }
 
   double _calculateAspectRatio(BuildContext context) {
-    final size = MediaQuery.of(context).size;
-    final width = size.width;
-    final height = size.height;
+    if (widget.controller.betterPlayerConfiguration.useSourceAspectRatio &&
+        widget.controller.videoPlayerController.value != null) {
+      return widget.controller.videoPlayerController.value.aspectRatio;
+    } else {
+      final size = MediaQuery.of(context).size;
+      final width = size.width;
+      final height = size.height;
 
-    return width > height ? width / height : height / width;
+      return width > height ? width / height : height / width;
+    }
   }
 
   void onControlsVisibilityChanged(bool state) {

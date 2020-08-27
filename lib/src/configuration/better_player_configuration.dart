@@ -29,6 +29,8 @@ class BetterPlayerConfiguration {
   /// Will fallback to fitting within the space allowed.
   final double aspectRatio;
 
+  final bool useSourceAspectRatio;
+
   /// The placeholder is displayed underneath the Video before it is initialized
   /// or played.
   final Widget placeholder;
@@ -62,6 +64,7 @@ class BetterPlayerConfiguration {
 
   const BetterPlayerConfiguration(
       {this.aspectRatio,
+      this.useSourceAspectRatio = false,
       this.autoPlay = false,
       this.startAt,
       this.looping = false,
